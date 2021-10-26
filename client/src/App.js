@@ -27,10 +27,10 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#home">
+              <Nav.Link as="div">
                 <Link to={'/movies'}>Movies</Link>
               </Nav.Link>
-              <Nav.Link href="#link">
+              <Nav.Link as="div">
                 {user ? (
                   <a href="/" onCLick={logout}>
                     Log out user

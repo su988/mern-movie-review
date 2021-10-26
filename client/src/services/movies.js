@@ -28,6 +28,10 @@ class MovieDataService {
       data: { review_id: id, user_id: userId },
     });
   }
+
+  getRatings() {
+    return axios.get(`${url}/ratings`);
+  }
 }
 
 export default new MovieDataService();
