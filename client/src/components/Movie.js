@@ -21,7 +21,19 @@ export const Movie = (props) => {
     MovieDataService.get(id)
       .then((response) => {
         setMovie(response.data);
-        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  const deleteReview = (reviewId, index) => {
+    MovieDataService.deleteReview(reviewId, props.user.id)
+      .then((response) => {
+        setMovie((prevState) => {
+          prevState.reviews.splice(index, 1);
+          return { ...prevState };
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -83,7 +95,12 @@ export const Movie = (props) => {
                           </Link>
                         </Col>
                         <Col>
-                          <Button variant="link">Delete</Button>
+                          <Button
+                            variant="link"
+                            onClick={() => deleteReview(review._id, index)}
+                          >
+                            Delete
+                          </Button>
                         </Col>
                       </Row>
                     )}
