@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MovieDataService from '../services/movies';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
@@ -63,8 +64,11 @@ export const Movie = (props) => {
               {movie.reviews.map((review, index) => {
                 return (
                   <Container as="div" key={index}>
-                    <h5>{review.name + ' reviewed on ' + review.date}</h5>
-                    <p>{review.review}</p>
+                    <h5>{review.review}</h5>
+                    <p>
+                      {review.name + ' reviewed on '}
+                      {moment(review.date).format('Do MMMMYYYY')}
+                    </p>
                     {props.user && props.user.id === review.user_id && (
                       <Row>
                         <Col>
