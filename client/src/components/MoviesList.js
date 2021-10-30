@@ -21,10 +21,12 @@ export const MoviesList = (props) => {
   useEffect(() => {
     retrieveMovies();
     retrieveRatings();
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     retrieveNextPage();
+    // eslint-disable-next-line
   }, [currentPage]);
 
   useEffect(() => {
